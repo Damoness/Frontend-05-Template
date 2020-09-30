@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <ol>
+      <li>2.绘制棋盘</li>
+    </ol>
+  </head>
+  <body>
+    <style>
+      .cell {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+        display: inline-block;
+        border: solid 1px white;
+        vertical-align: middle;
+
+        line-height: 100px;
+        font-size: 50px;
+        text-align: center;
+      }
+    </style>
+
+    <div id="board"></div>
+    <script>
+      let pattern = [
+        [2, 0, 0],
+        [0, 1, 0],
+        [0, 0, 0],
+      ];
+
+      let WIDTH = 3;
+
+      function show() {
+        let board = document.getElementById("board");
+
+        for (let i = 0; i < WIDTH; i++) {
+          for (let j = 0; j < WIDTH; j++) {
+            let cell = document.createElement("div");
+            cell.classList.add("cell");
+            cell.innerText =
+              pattern[j][i] == 2 ? "❌" : pattern[j][i] == 1 ? "⭕️" : "";
+
+            board.appendChild(cell);
+          }
+
+          board.appendChild(document.createElement("br"));
+        }
+      }
+      show();
+    </script>
+  </body>
+</html>
