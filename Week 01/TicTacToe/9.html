@@ -12,6 +12,7 @@
       <li>6. 增加策略</li>
       <li>7. 使用一维数组 ； Object.create clone数据</li>
       <li>8. 人机对战</li>
+      <li>9. 完善</li>
     </ul>
   </head>
   <body>
@@ -31,10 +32,15 @@
     </style>
 
     <div id="board"></div>
+    <button onclick="reset()">重新开始</button>
     <script>
       let pattern = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
       let WIDTH = 3;
+
+      let color = 1;
+
+      let finish = false;
 
       let numToStr = {
         0: "",
@@ -42,7 +48,12 @@
         2: "❌",
       };
 
-      let color = 1;
+      function reset() {
+        pattern = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+        color = 1;
+        finish = true;
+        show();
+      }
 
       function show() {
         let board = document.getElementById("board");
@@ -57,7 +68,6 @@
           }
           board.appendChild(document.createElement("br"));
         }
-        //console.log(numToStr[color], bestChoice(pattern, color));
       }
 
       function userMove(i, j) {
