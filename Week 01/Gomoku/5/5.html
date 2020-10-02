@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>五子棋</title>
+  </head>
+  <body>
+    <style>
+      .cell {
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        background-color: yellowgreen;
+        border: solid 1px white;
+
+        vertical-align: middle;
+        line-height: 50px;
+        font-size: 40px;
+        text-align: center;
+      }
+    </style>
+    <ul>
+      <li>渲染棋盘</li>
+      <li>落子逻辑</li>
+      <li>检测胜负</li>
+      <li>初步AI，预测将要要赢</li>
+      <li>增加策略</li>
+    </ul>
+    <div id="board"></div>
+    <script src="./5.js"></script>
+    <!-- <script src="./5.test.js"></script> -->
+    <script>
+      let pattern = Array.from({ length: WIDTH * WIDTH }).map((i) => 0);
+      let color = 1; // 0 初始, 1 白子 , 2 黑子
+
+      show(pattern);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>五子棋</title>
+  </head>
+  <body>
+    <style>
+      .cell {
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        background-color: yellowgreen;
+        border: solid 1px white;
+
+        vertical-align: middle;
+        line-height: 50px;
+        font-size: 40px;
+        text-align: center;
+      }
+    </style>
+    <ul>
+      <li>渲染棋盘</li>
+      <li>落子逻辑</li>
+    </ul>
+    <div id="board"></div>
+    <script>
+      const WIDTH = 15;
+
+      let pattern = Array.from({ length: WIDTH * WIDTH }).map((i) => 0);
+
+      let color = 1; // 0 初始, 1 白子 , 2 黑子
+
+      const numToIcon = {
+        0: "",
+        1: "⚪️",
+        2: "⚫️",
+      };
+
+      function show(pattern) {
+        const element = document.getElementById("board");
+        element.innerHTML = "";
+        console.time("render");
+        pattern.forEach((item, index) => {
+          if (index !== 0 && index % WIDTH === 0) {
+            element.appendChild(document.createElement("br"));
+          }
+          let div = document.createElement("div");
+          div.addEventListener("click", () => move(index));
+          div.className = "cell";
+          div.innerText = numToIcon[item];
+          element.appendChild(div);
+        });
+        console.timeEnd("render");
+      }
+
+      function move(i) {
+        if (pattern[i] !== 0) {
+          console.error("此位置已经落子");
+          return;
+        }
+
+        pattern[i] = color;
+        color = 3 - color;
+
+        show(pattern);
+      }
+
+      show(pattern);
+    </script>
+  </body>
+</html>

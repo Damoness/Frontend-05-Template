@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>五子棋</title>
+  </head>
+  <body>
+    <style>
+      .cell {
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        background-color: yellowgreen;
+        border: solid 1px white;
+
+        vertical-align: middle;
+        line-height: 50px;
+        font-size: 40px;
+        text-align: center;
+      }
+    </style>
+    <ul>
+      <li>渲染棋盘</li>
+      <li>落子逻辑</li>
+      <li>检测胜负</li>
+      <li>初步AI，预测将要要赢</li>
+    </ul>
+    <div id="board"></div>
+    <script>
+      const WIDTH = 15;
+
+      let pattern = Array.from({ length: WIDTH * WIDTH }).map((i) => 0);
+
+      let color = 1; // 0 初始, 1 白子 , 2 黑子
+
+      const numToIcon = {
+        0: "",
+        1: "⚪️",
+        2: "⚫️",
+      };
+
+      function show(pattern) {
+        const element = document.getElementById("board");
+        element.innerHTML = "";
+        //console.time("render");
+        pattern.forEach((item, index) => {
+          if (index !== 0 && index % WIDTH === 0) {
+            element.appendChild(document.createElement("br"));
+          }
+          let div = document.createElement("div");
+          div.addEventListener("click", () => move(index));
+          div.className = "cell";
+          div.innerText = numToIcon[item];
+          element.appendChild(div);
+        });
+        //console.timeEnd("render");
+      }
+
+      function move(i) {
+        if (pattern[i] !== 0) {
+          console.error("此位置已经落子");
+          return;
+        }
+
+        pattern[i] = color;
+        show(pattern);
+
+        if (check(i, pattern)) {
+          console.log(numToIcon[color], " win");
+        }
+        //交换
+        color = 3 - color;
+
+        if (willWin(pattern, color)) {
+          console.log(numToIcon[color], "will win");
+        }
+      }
+
+      //当前落子点是否有连续5个子
+      function check(index, pattern) {
+        let y = Math.floor(index / WIDTH);
+        let x = index % WIDTH;
+        //console.log(x, y);
+
+        {
+          //横
+          let num = 0;
+          for (let j = x - 4, i = y; j <= x + 4; j++) {
+            if (j < 0 || j >= WIDTH || pattern[i * WIDTH + j] !== color) {
+              num = 0;
+              continue;
+            }
+            num++;
+            if (num === 5) {
+              console.log("-");
+              return true;
+            }
+          }
+        }
+
+        {
+          //纵
+          let num = 0;
+          for (let i = y - 4, j = x; i <= y + 4; i++) {
+            if (i < 0 || i >= WIDTH || pattern[i * WIDTH + j] !== color) {
+              num = 0;
+              continue;
+            }
+
+            num++;
+            if (num === 5) {
+              console.log("|");
+              return true;
+            }
+          }
+        }
+
+        {
+          // \
+          let num = 0;
+          for (let i = y - 4, j = x - 4; i <= y + 4; i++, j++) {
+            if (i < 0 || i >= WIDTH || pattern[i * WIDTH + j] !== color) {
+              num = 0;
+              continue;
+            }
+            num++;
+            if (num === 5) {
+              console.log("\\");
+              return true;
+            }
+          }
+        }
+
+        {
+          // /
+          let num = 0;
+          for (let i = y + 4, j = x - 4; i >= y - 4; i--, j++) {
+            if (i < 0 || i >= WIDTH || pattern[i * WIDTH + j] !== color) {
+              num = 0;
+              continue;
+            }
+            num++;
+            if (num === 5) {
+              console.log("/");
+              return true;
+            }
+          }
+        }
+        return false;
+      }
+
+      function willWin(pattern, color) {
+        for (let i = 0; i < pattern.length; i++) {
+          let y = Math.floor(i / WIDTH);
+          let x = i % WIDTH;
+          if (pattern[i] === 0) {
+            let tmp = clone(pattern);
+            tmp[i] = color;
+            if (check(i, tmp)) {
+              console.log(numToIcon[color], { x, y }, " will win");
+              return true;
+            }
+          }
+        }
+      }
+
+      function clone(pattern) {
+        return JSON.parse(JSON.stringify(pattern));
+      }
+
+      show(pattern);
+    </script>
+  </body>
+</html>
