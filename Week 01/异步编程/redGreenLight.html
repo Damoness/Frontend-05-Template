@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>红绿灯</title>
+  </head>
+  <body>
+    <style>
+      div {
+        height: 200px;
+        width: 200px;
+        margin: 0 20px;
+        border-radius: 100px;
+        background-color: gray;
+        display: inline-block;
+      }
+      .red.light {
+        background-color: red;
+      }
+      .green.light {
+        background-color: green;
+      }
+      .blue.light {
+        background-color: blue;
+      }
+    </style>
+    <div id="red" class="red"></div>
+    <div id="green" class="green"></div>
+    <div id="blue" class="blue"></div>
+
+    <button id="next">next</button>
+
+    <script>
+      function red() {
+        let red = document.getElementById("red");
+        var lights = document.getElementsByTagName("div");
+        for (var i = 0; i < 3; i++) {
+          lights[i].classList.remove("light");
+        }
+        red.classList.add("light");
+      }
+
+      function green() {
+        var lights = document.getElementsByTagName("div");
+        for (var i = 0; i < 3; i++) {
+          lights[i].classList.remove("light");
+        }
+
+        let green = document.getElementById("green");
+        green.classList.add("light");
+      }
+
+      function blue() {
+        var lights = document.getElementsByTagName("div");
+        for (var i = 0; i < 3; i++) {
+          lights[i].classList.remove("light");
+        }
+
+        let blue = document.getElementById("blue");
+        blue.classList.add("light");
+      }
+
+      function start1() {
+        setTimeout(() => {
+          red();
+          setTimeout(() => {
+            green();
+            setTimeout(() => {
+              blue();
+              start1();
+            }, 2000);
+          }, 2000);
+        }, 2000);
+      }
+
+      function sleep(duration) {
+        return new Promise((resolve, reject) => {
+          setTimeout(resolve, duration);
+        });
+      }
+
+      function happen(element, eventName) {
+        return new Promise((resolve, reject) => {
+          element.addEventListener(eventName, resolve, { once: true });
+        });
+      }
+
+      function start2() {
+        red();
+        sleep(2000)
+          .then(() => {
+            green();
+            return sleep(2000);
+          })
+          .then(() => {
+            blue();
+            return sleep(2000);
+          })
+          .then(start2);
+      }
+
+      async function start3() {
+        await sleep(2000);
+        red();
+        await sleep(2000);
+        green();
+        await sleep(2000);
+        blue();
+        await start3();
+      }
+
+      //手动控制
+      async function start4() {
+        red();
+        await happen(document.getElementById("next"), "click");
+        green();
+        await happen(document.getElementById("next"), "click");
+        blue();
+        await happen(document.getElementById("next"), "click");
+        await start4();
+      }
+
+      async function* counter() {
+        let i = 0;
+        while (true) {
+          await sleep(1000);
+          yield i++;
+        }
+      }
+
+      async function test() {
+        for await (let v of counter()) {
+          console.log(v);
+        }
+      }
+    </script>
+  </body>
+</html>

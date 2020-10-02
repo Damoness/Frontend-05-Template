@@ -22,4 +22,11 @@
 3. 。。。
 
 ### 知识点
-Object.create 的使用
+使用 Object.create clone 一维数组
+
+## 异步编程
+1. callback 造成回调地狱
+2. promise
+3. async/await
+
+Promise.all
