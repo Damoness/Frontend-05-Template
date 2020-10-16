@@ -9,6 +9,8 @@
 
 ### 广度优先搜索. 
 1. 数组
-    * 栈 : push , push
+    * 栈 : push , pop
     * 队列 : push , shift
-2. 
+2. 可视化 ： 使用 async await
+
+### 寻路 可视化
