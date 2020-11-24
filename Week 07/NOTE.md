@@ -119,3 +119,31 @@ JS执行粒度（运行时）
 * 直接量/变量/this...
 
 ## 7. JS结构化 | JS函数调用
+
+ECMAScript Code Execution Context
+* code evaluation state
+* Function
+* Script or Module
+* Realm
+* LexicalEnvironment
+* VariableEnvironment
+
+Generator Execution Contexts
+* code evaluation state
+* Function
+* Script or Module
+* Realm
+* LexicalEnvironment
+* VariableEnvironment
+* Generator
+
+Realm: 保存着所有内置对象的一个王国或领域
+
+LexicalEnvironment
+  
+VariableEnvironment 
+是个历史遗留包袱，仅仅用于处理var声明
+
+Environment Records
+  
+
