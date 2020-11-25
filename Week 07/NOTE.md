@@ -147,3 +147,8 @@ VariableEnvironment
 Environment Records
   
 
+
+[realm 相关文档](https://tc39.es/ecma262/#sec-code-realms)
+
+[内置对象表格](https://tc39.es/ecma262/#sec-well-known-intrinsic-objects)
+
