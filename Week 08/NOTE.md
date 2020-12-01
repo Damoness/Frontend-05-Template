@@ -23,3 +23,43 @@
 ## 6. 状态机 | 使用状态机处理字符串（一）
 
 ## 7. 状态机 | 使用状态机处理字符串（二）
+
+## 8. HTTP请求 | HTTP的协议解析
+1. HTTP : require('http')
+   * Request
+   * Response
+2. TCP : require('net')
+   
+## 9. HTTP请求 | 服务端环境准备
+HTTP：Hyper Text Transfer Protocol 文本型协议
+* request line
+* headers
+* body
+
+## 10. HTTP请求 | 实现一个HTTP的请求
+* Content-Type 是一个必要的字段，要有默认值
+* body是kv格式
+* 不同的Content-Type影响body的格式
+
+
+## 11. HTTP请求 | send函数的编写，了解response格式
+response
+* status line
+* headers
+* body
+
+1. Carriage Return (CR) 0x0D  \r  Commodore and Early Macintosh operating systems (OS-9 and earlier).
+2. Line Feed (LF) 0x0A \n   UNIX based systems (Linux, Mac OSX, etc)
+3. The End of Line (EOL) 0x0D 0x0A  \r\n  most other non-Unix operating systems including Microsoft Windows, Symbian OS and others.
+## 12. HTTP请求 | 发送请求
+
+* 设计已有的connection或者建立自己的connection
+* 收到数据传给parser
+* 根据parser的状态resolve promise
+## 13. HTTP请求 | response解析
+
+## 14. HTTP请求 | response body的解析
+
+
+
+[An overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)
