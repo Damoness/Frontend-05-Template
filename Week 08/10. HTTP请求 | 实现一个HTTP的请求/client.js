@@ -29,7 +29,7 @@ class Request {
   toString() {
     return `GET ${this.path} HTTP/1.1\r\n${Object.keys(this.headers)
       .map((key) => `${key}:${this.headers[key]}`)
-      .join("\r\n")}\r\r${this.bodyText}`;
+      .join("\r\n")}\r\n\r\n${this.bodyText}`;
   }
 
   send() {
@@ -53,10 +53,5 @@ let request = new Request({
 });
 
 request.send();
-
-GET / HTTP / 1.1;
-k: v;
-
-key = value;
 
 console.log(request.toString());

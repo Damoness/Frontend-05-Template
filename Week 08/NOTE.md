@@ -57,9 +57,16 @@ response
 * 收到数据传给parser
 * 根据parser的状态resolve promise
 ## 13. HTTP请求 | response解析
-
+* Response必须分段构造，所以我们要用一个ResponseParse来‘装配’
+* ResponseParser分段处理ResponseText,我们用状态机来分析文本的结构
 ## 14. HTTP请求 | response body的解析
 
+* Response的body可能根据Content-Type有不同的结构，因此我们会采用子Parser的结构来解决问题
 
+
+Transfer-Encoding
+* Trunked 一个长度后面跟着一个trunk的内容
+
+[Transfer-Encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Transfer-Encoding)
 
 [An overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)
