@@ -7,7 +7,20 @@
         {
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "name": "13",
+            "name": "09-03",
+            "program": "${workspaceFolder}/Week 09/3. HTML解析 | 解析标签/client.js",
+            "request": "launch",
+            "restart": true,
+            "runtimeExecutable": "node",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node"
+        },
+        {
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "name": "08-13",
             "program": "${workspaceFolder}/Week 08/13. HTTP请求 | response解析/client.js",
             "request": "launch",
             "restart": true,
@@ -20,7 +33,7 @@
         {
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
-            "name": "14",
+            "name": "08-14",
             "program": "${workspaceFolder}/Week 08/14. HTTP请求 | response body的解析/client.js",
             "request": "launch",
             "restart": true,
@@ -30,5 +43,6 @@
             ],
             "type": "pwa-node"
         },
+
     ]
 }
