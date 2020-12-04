@@ -43,6 +43,27 @@ function tagName(c) {
   }
 }
 
+function beforeAttributeName(c) {
+  if (c.match(/^[\t\n\f ]$/)) {
+    return beforeAttributeName;
+  } else if (c == ">") {
+    return data;
+  } else if (c == "=") {
+    return beforeAttributeName;
+  } else {
+    return beforeAttributeName;
+  }
+}
+
+function selfClosingStartTag(c) {
+  if (c == ">") {
+    currentToken.isSelfClosing = true;
+    return data;
+  } else if (c == "EOF") {
+  } else {
+  }
+}
+
 module.exports.parseHTML = function parseHTML(html) {
   //console.log("parseHTML:", html);
   let state = data;
@@ -50,4 +71,5 @@ module.exports.parseHTML = function parseHTML(html) {
     state = state(c);
   }
   state = state(EOF);
+  console.log("eeee");
 };
