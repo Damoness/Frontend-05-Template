@@ -12,7 +12,10 @@
 
 [parsing.html](https://html.spec.whatwg.org/multipage/parsing.html#data-state)
 ## 3. HTML解析 | 解析标签
-* 主要标签有：开始标签，结束标签和自封闭标签
+* 主要标签有
+    1. 开始标签 <a>
+    2. 结束标签 </a>
+    3. 自封闭标签 <br/>
 * 暂时忽略属性
 
 ## 4. HTML解析 | 创建元素

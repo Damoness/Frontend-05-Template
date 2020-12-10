@@ -178,7 +178,7 @@ class TrunkedBodyParser {
         }
         this.current = this.WAITING_LENGTH_LINE_END;
       } else {
-        this.length = this.length * 10 + parseInt(char, 16);
+        this.length = this.length * 16 + parseInt(char, 16);
       }
     } else if (this.current === this.WAITING_LENGTH_LINE_END) {
       if (char === "\n") {
@@ -220,5 +220,3 @@ let request = new Request({
 request.send().then((res) => {
   parser.parseHTML(res.body);
 });
-
-console.log(request.toString());

@@ -1,5 +1,5 @@
 const net = require("net");
-const parser = require("./parser");
+const parser = require("./parser"); //HTML解析
 class Request {
   constructor(options) {
     this.method = options.method || "GET"; //方法
@@ -86,6 +86,7 @@ class ResponseParser {
     this.bodyParser = null;
   }
   receive(string) {
+    console.log("receive", string);
     for (let i = 0; i < string.length; i++) {
       this.receiveChar(string.charAt(i));
     }
@@ -218,7 +219,9 @@ let request = new Request({
 });
 
 request.send().then((res) => {
+  console.log(res);
+
   parser.parseHTML(res.body);
 });
 
-console.log(request.toString());
+//console.log(request.toString());

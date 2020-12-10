@@ -7,6 +7,19 @@
         {
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
+            "name": "09-04",
+            "program": "${workspaceFolder}/Week 09/4. HTML解析 | 创建元素/client.js",
+            "request": "launch",
+            "restart": true,
+            "runtimeExecutable": "node",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node"
+        },
+        {
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
             "name": "09-03",
             "program": "${workspaceFolder}/Week 09/3. HTML解析 | 解析标签/client.js",
             "request": "launch",
