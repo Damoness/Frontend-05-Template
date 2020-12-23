@@ -7,6 +7,19 @@
         {
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen",
+            "name": "09-07",
+            "program": "${workspaceFolder}/Week 09/7. HTML解析 | 将文本节点加到DOM树/client.js",
+            "request": "launch",
+            "restart": true,
+            "runtimeExecutable": "/Users/wudi/.nvm/versions/node/v14.15.2/bin/node",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "pwa-node"
+        },
+        {
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
             "name": "09-06",
             "program": "${workspaceFolder}/Week 09/6. HTML解析 | 用token构建DOM树/client.js",
             "request": "launch",
@@ -63,7 +76,7 @@
             "program": "${workspaceFolder}/Week 08/13. HTTP请求 | response解析/client.js",
             "request": "launch",
             "restart": true,
-            "runtimeExecutable": "/Users/wudi/.nvm/versions/node/v12.16.0/bin/node",
+            "runtimeExecutable": "/Users/wudi/.nvm/versions/node/v14.15.2/bin/node",
             "skipFiles": [
                 "<node_internals>/**"
             ],
@@ -76,7 +89,7 @@
             "program": "${workspaceFolder}/Week 08/14. HTTP请求 | response body的解析/client.js",
             "request": "launch",
             "restart": true,
-            "runtimeExecutable": "/Users/wudi/.nvm/versions/node/v12.16.0/bin/node",
+            "runtimeExecutable": "/Users/wudi/.nvm/versions/node/v14.15.2/bin/node",
             "skipFiles": [
                 "<node_internals>/**"
             ],
